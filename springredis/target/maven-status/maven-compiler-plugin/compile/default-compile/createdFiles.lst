@@ -1,0 +1,7 @@
+com\syf\model\DictionaryInfo.class
+com\syf\model\BsUser.class
+com\syf\mapper\UserMapper.class
+com\syf\service\impl\UserServiceImpl.class
+com\syf\service\UserService.class
+com\syf\Application.class
+com\syf\controller\UserController.class

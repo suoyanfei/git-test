@@ -1,0 +1,39 @@
+
+
+spring:
+  application:
+    name: springboot
+  datasource:
+    url: jdbc:mysql://localhost:3306/saas?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 4
+      min-idle: 10 #最小空闲连接数
+      max-active: 20 #最大连接数
+  #redis:
+   # database: 0
+   # host: 192.168.119.128
+   # port: 6379
+    #password:
+    #jedis:
+      #pool:
+       # max-active: 5
+       # max-wait: 300
+        #max-idle: 8
+       # min-idle: 0
+  mvc:
+    view:
+      prefix: /WEB-INF/
+      suffix: .jsp
+
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/**/*.xml
+
+#以下两个配置 在打成jar包运行的时候，配置生效 但是打成war包部署在tomcat下就不起作用了
+server:
+  port: 8001
+  ##context-path: /springbootJar   #执行项目访问的根路径

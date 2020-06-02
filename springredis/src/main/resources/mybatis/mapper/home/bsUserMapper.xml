@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.syf.mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.syf.model.BsUser">
+    <id column="usr_id" jdbcType="VARCHAR" property="usrId" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="enable_state" jdbcType="INTEGER" property="enableState" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="department_id" jdbcType="VARCHAR" property="departmentId" />
+    <result column="time_of_entry" jdbcType="TIMESTAMP" property="timeOfEntry" />
+    <result column="form_of_employment" jdbcType="INTEGER" property="formOfEmployment" />
+    <result column="work_number" jdbcType="VARCHAR" property="workNumber" />
+    <result column="form_of_management" jdbcType="VARCHAR" property="formOfManagement" />
+    <result column="working_city" jdbcType="VARCHAR" property="workingCity" />
+    <result column="correction_time" jdbcType="TIMESTAMP" property="correctionTime" />
+    <result column="in_service_status" jdbcType="INTEGER" property="inServiceStatus" />
+    <result column="company_id" jdbcType="VARCHAR" property="companyId" />
+    <result column="company_name" jdbcType="VARCHAR" property="companyName" />
+    <result column="department_name" jdbcType="VARCHAR" property="departmentName" />
+    <result column="level" jdbcType="VARCHAR" property="level" />
+    <result column="file_url" jdbcType="LONGVARCHAR" property="fileUrl" />
+  </resultMap>
+
+
+
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+     *
+    from bs_user
+    where usr_id = #{usrId,jdbcType=VARCHAR}
+  </select>
+  <select id="selectLike" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+     *
+    from bs_user
+    where username like concat("%",#{name,jdbcType=VARCHAR},"%")
+  </select>
+
+
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from bs_user
+    where usr_id = #{usrId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.syf.model.BsUser">
+    insert into bs_user (usr_id, mobile, username, 
+      password, enable_state, create_time, 
+      department_id, time_of_entry, form_of_employment, 
+      work_number, form_of_management, working_city, 
+      correction_time, in_service_status, company_id, 
+      company_name, department_name, level, 
+      file_url)
+    values (#{usrId,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{enableState,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{departmentId,jdbcType=VARCHAR}, #{timeOfEntry,jdbcType=TIMESTAMP}, #{formOfEmployment,jdbcType=INTEGER}, 
+      #{workNumber,jdbcType=VARCHAR}, #{formOfManagement,jdbcType=VARCHAR}, #{workingCity,jdbcType=VARCHAR}, 
+      #{correctionTime,jdbcType=TIMESTAMP}, #{inServiceStatus,jdbcType=INTEGER}, #{companyId,jdbcType=VARCHAR}, 
+      #{companyName,jdbcType=VARCHAR}, #{departmentName,jdbcType=VARCHAR}, #{level,jdbcType=VARCHAR}, 
+      #{fileUrl,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.syf.model.BsUser">
+    insert into bs_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="usrId != null">
+        usr_id,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="enableState != null">
+        enable_state,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="departmentId != null">
+        department_id,
+      </if>
+      <if test="timeOfEntry != null">
+        time_of_entry,
+      </if>
+      <if test="formOfEmployment != null">
+        form_of_employment,
+      </if>
+      <if test="workNumber != null">
+        work_number,
+      </if>
+      <if test="formOfManagement != null">
+        form_of_management,
+      </if>
+      <if test="workingCity != null">
+        working_city,
+      </if>
+      <if test="correctionTime != null">
+        correction_time,
+      </if>
+      <if test="inServiceStatus != null">
+        in_service_status,
+      </if>
+      <if test="companyId != null">
+        company_id,
+      </if>
+      <if test="companyName != null">
+        company_name,
+      </if>
+      <if test="departmentName != null">
+        department_name,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+      <if test="fileUrl != null">
+        file_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="usrId != null">
+        #{usrId,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="enableState != null">
+        #{enableState,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="departmentId != null">
+        #{departmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="timeOfEntry != null">
+        #{timeOfEntry,jdbcType=TIMESTAMP},
+      </if>
+      <if test="formOfEmployment != null">
+        #{formOfEmployment,jdbcType=INTEGER},
+      </if>
+      <if test="workNumber != null">
+        #{workNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="formOfManagement != null">
+        #{formOfManagement,jdbcType=VARCHAR},
+      </if>
+      <if test="workingCity != null">
+        #{workingCity,jdbcType=VARCHAR},
+      </if>
+      <if test="correctionTime != null">
+        #{correctionTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inServiceStatus != null">
+        #{inServiceStatus,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null">
+        #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentName != null">
+        #{departmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="fileUrl != null">
+        #{fileUrl,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.syf.model.BsUser">
+    update bs_user
+    <set>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="enableState != null">
+        enable_state = #{enableState,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="departmentId != null">
+        department_id = #{departmentId,jdbcType=VARCHAR},
+      </if>
+      <if test="timeOfEntry != null">
+        time_of_entry = #{timeOfEntry,jdbcType=TIMESTAMP},
+      </if>
+      <if test="formOfEmployment != null">
+        form_of_employment = #{formOfEmployment,jdbcType=INTEGER},
+      </if>
+      <if test="workNumber != null">
+        work_number = #{workNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="formOfManagement != null">
+        form_of_management = #{formOfManagement,jdbcType=VARCHAR},
+      </if>
+      <if test="workingCity != null">
+        working_city = #{workingCity,jdbcType=VARCHAR},
+      </if>
+      <if test="correctionTime != null">
+        correction_time = #{correctionTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inServiceStatus != null">
+        in_service_status = #{inServiceStatus,jdbcType=INTEGER},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId,jdbcType=VARCHAR},
+      </if>
+      <if test="companyName != null">
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentName != null">
+        department_name = #{departmentName,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        level = #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="fileUrl != null">
+        file_url = #{fileUrl,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where usr_id = #{usrId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.syf.model.BsUser">
+    update bs_user
+    set mobile = #{mobile,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      enable_state = #{enableState,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      department_id = #{departmentId,jdbcType=VARCHAR},
+      time_of_entry = #{timeOfEntry,jdbcType=TIMESTAMP},
+      form_of_employment = #{formOfEmployment,jdbcType=INTEGER},
+      work_number = #{workNumber,jdbcType=VARCHAR},
+      form_of_management = #{formOfManagement,jdbcType=VARCHAR},
+      working_city = #{workingCity,jdbcType=VARCHAR},
+      correction_time = #{correctionTime,jdbcType=TIMESTAMP},
+      in_service_status = #{inServiceStatus,jdbcType=INTEGER},
+      company_id = #{companyId,jdbcType=VARCHAR},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      department_name = #{departmentName,jdbcType=VARCHAR},
+      level = #{level,jdbcType=VARCHAR},
+      file_url = #{fileUrl,jdbcType=LONGVARCHAR}
+    where usr_id = #{usrId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.syf.model.BsUser">
+    update bs_user
+    set mobile = #{mobile,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      enable_state = #{enableState,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      department_id = #{departmentId,jdbcType=VARCHAR},
+      time_of_entry = #{timeOfEntry,jdbcType=TIMESTAMP},
+      form_of_employment = #{formOfEmployment,jdbcType=INTEGER},
+      work_number = #{workNumber,jdbcType=VARCHAR},
+      form_of_management = #{formOfManagement,jdbcType=VARCHAR},
+      working_city = #{workingCity,jdbcType=VARCHAR},
+      correction_time = #{correctionTime,jdbcType=TIMESTAMP},
+      in_service_status = #{inServiceStatus,jdbcType=INTEGER},
+      company_id = #{companyId,jdbcType=VARCHAR},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      department_name = #{departmentName,jdbcType=VARCHAR},
+      level = #{level,jdbcType=VARCHAR}
+    where usr_id = #{usrId,jdbcType=VARCHAR}
+  </update>
+</mapper>
